@@ -41,6 +41,15 @@ module.exports = function(grunt) {
                 }
             }
         },
+        inlinecss: {
+            main: {
+                options: {
+                },
+                files: {
+                    'html/build/index.html': 'html/index.html'
+                }
+            }
+        },
         imagemin: {                          // Task
             dynamic: {                         // Another target
                 files: [{
@@ -59,11 +68,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-uncss');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-smushit');
+    grunt.loadNpmTasks('grunt-inline-css');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-newer');
 
     // 4. Where I tell Grunt what to do when I type "grunt" into the terminal.
-    grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'uncss', 'newer:imagemin']);
+    grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'uncss', 'inlinecss', 'newer:imagemin']);
 
 };
